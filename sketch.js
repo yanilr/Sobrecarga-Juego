@@ -105,7 +105,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(900,500);
+  createCanvas(700,400);
   bateriaColor = color(0, 255, 0);
   tiempoInicio = millis();
   juegoIniciado = false;
