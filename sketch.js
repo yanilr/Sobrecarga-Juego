@@ -76,32 +76,32 @@ let atrasImg;
 let abajoImg;
 
 function preload() {
-  corazonFondo = loadSound('corazon.wav');
-  iniciobateriaImg = loadImage('iniciobateria.png');
-  fondoImg = loadImage('pasillo.png'); // Imagen de fondo
-  bateriaImg = loadImage('bateria maestra (1).png');
-  vocacionImg = loadImage('vocacion.png');
-  enojadaImg = loadImage('enojada.png');
-  maestrasaltoImg = loadImage('maestrasalta.png');
-  explosionImg = loadImage('PropsInPixels_16x50.png'); // Imagen de rayos amarillos
-  ripImg = loadImage('rip.png'); // Emoticon RIP
-  ganarImg = loadImage('ganar.png'); // Imagen de ganar
-  fondoOscuroImg = loadImage('fondooscuro.png');
-  caminaImg = loadImage('camina.png');
-  atrasImg = loadImage('atras.png');
-  abajoImg = loadImage('abajo.png');
-  for (let i = 13; i <= 19; i++) positivosImgs.push(loadImage(`${i}.png`));
-  for (let i = 1; i <= 12; i++) negativosImgs.push(loadImage(`${i}.png`));
-  sonidoCarga = loadSound('sonido_carga.mp3'); // Debes agregar un sonido en la carpeta
-  sonidoDescarga = loadSound('sonido_descarga.mp3'); // Debes agregar un sonido en la carpeta
-  sonidoExplosion = loadSound('sonido_explosion.wav'); // Sonido de explosión
-  sonidoCampana = loadSound('campana.wav'); // Sonido de campana al inicio
-  musicaFondo = loadSound('musicafondo.wav'); // Música de fondo
-  sonidoFin = loadSound('fin.mp3'); // Sonido al perder
-  sonidoGanaste = loadSound('ganaste.mp3'); // Sonido al ganar
-  sonidoLatidoFin = loadSound('latidofin.mp3'); // Sonido de latido al perder
-  sonidoWow = loadSound('wow.mp3'); // Sonido wow al atrapar positivo
-  sonidoSuspiro = loadSound('suspiro.wav'); // Sonido de suspiro al atrapar negativo
+  corazonFondo = loadSound('libraries/corazon.wav');
+  iniciobateriaImg = loadImage('libraries/iniciobateria.png');
+  fondoImg = loadImage('libraries/pasillo.png'); // Imagen de fondo
+  bateriaImg = loadImage('libraries/bateria maestra (1).png');
+  vocacionImg = loadImage('libraries/vocacion.png');
+  enojadaImg = loadImage('libraries/enojada.png');
+  maestrasaltoImg = loadImage('libraries/maestrasalta.png');
+  explosionImg = loadImage('libraries/PropsInPixels_16x50.png'); // Imagen de rayos amarillos
+  ripImg = loadImage('libraries/rip.png'); // Emoticon RIP
+  ganarImg = loadImage('libraries/ganar.png'); // Imagen de ganar
+  fondoOscuroImg = loadImage('libraries/fondooscuro.png');
+  caminaImg = loadImage('libraries/camina.png');
+  atrasImg = loadImage('libraries/atras.png');
+  abajoImg = loadImage('libraries/abajo.png');
+  for (let i = 13; i <= 19; i++) positivosImgs.push(loadImage(`libraries/${i}.png`));
+  for (let i = 1; i <= 12; i++) negativosImgs.push(loadImage(`libraries/${i}.png`));
+  sonidoCarga = loadSound('libraries/sonido_carga.mp3'); // Debes agregar un sonido en la carpeta
+  sonidoDescarga = loadSound('libraries/sonido_descarga.mp3'); // Debes agregar un sonido en la carpeta
+  sonidoExplosion = loadSound('libraries/sonido_explosion.wav'); // Sonido de explosión
+  sonidoCampana = loadSound('libraries/campana.wav'); // Sonido de campana al inicio
+  musicaFondo = loadSound('libraries/musicafondo.wav'); // Música de fondo
+  sonidoFin = loadSound('libraries/fin.mp3'); // Sonido al perder
+  sonidoGanaste = loadSound('libraries/ganaste.mp3'); // Sonido al ganar
+  sonidoLatidoFin = loadSound('libraries/latidofin.mp3'); // Sonido de latido al perder
+  sonidoWow = loadSound('libraries/wow.mp3'); // Sonido wow al atrapar positivo
+  sonidoSuspiro = loadSound('libraries/suspiro.wav'); // Sonido de suspiro al atrapar negativo
 }
 
 function setup() {
@@ -567,6 +567,13 @@ function keyPressed() {
     return;
   }
   // Controles normales del juego
+  // Evita que las flechas muevan la página cuando el juego está activo
+  window.addEventListener("keydown", function(e) {
+    const flechas = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+    if (flechas.includes(e.key)) {
+      e.preventDefault();
+    }
+  }, false);
   if (keyCode === UP_ARROW && enSuelo) {
     velocidadY = -28; // salto más alto
   }
