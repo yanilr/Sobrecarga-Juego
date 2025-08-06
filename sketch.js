@@ -567,13 +567,6 @@ function keyPressed() {
     return;
   }
   // Controles normales del juego
-  // Evita que las flechas muevan la página cuando el juego está activo
-  window.addEventListener("keydown", function(e) {
-    const flechas = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
-    if (flechas.includes(e.key)) {
-      e.preventDefault();
-    }
-  }, false);
   if (keyCode === UP_ARROW && enSuelo) {
     velocidadY = -28; // salto más alto
   }
@@ -619,3 +612,11 @@ function keyPressed() {
     }
   }
 }
+
+// Evita que las flechas muevan la página cuando el juego está activo
+window.addEventListener("keydown", function(e) {
+  const flechas = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  if (flechas.includes(e.key)) {
+    e.preventDefault();
+  }
+}, false);
